@@ -52,7 +52,7 @@ interface IWeather {
   speed: number;
   country: string;
   humidity: number;
-  timezone?: string;
+  timezone: string;
   feels_like: number;
 }
 
