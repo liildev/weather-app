@@ -20,10 +20,10 @@ export default function useFetch(name: string | undefined) {
     const fetchWeather = async () => {
       try {
         setLoading(true);
+        setError("");
 
         const data = await getFormattedWeatherData({ ...query, units });
 
-        setError("");
         setWeather(data);
       } catch (e) {
         if (axios.isAxiosError(e) && e.response) {

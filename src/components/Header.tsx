@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header>
-      <h1>Weather App</h1>
+      <Link to={"/"} className="text-2xl font-bold">Weather App</Link>
     </header>
   );
 }

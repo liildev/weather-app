@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useAuth } from "../hooks";
 import { history } from "../utils";
-import { Login, City } from "../pages";
 import { Route, Routes } from "react-router-dom";
+import { Login, City, Home } from "../pages";
 
 import Layout from "../layout";
 
@@ -20,6 +20,8 @@ export default function Router() {
       <Route path="/sign-in" element={<Login />} />
 
       <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+
         <Route path="/city/:name" element={<City />} />
       </Route>
     </Routes>

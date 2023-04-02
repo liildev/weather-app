@@ -52,8 +52,8 @@ interface IWeather {
   speed: number;
   country: string;
   humidity: number;
+  timezone?: string;
   feels_like: number;
-  timezone: string;
 }
 
 interface IData {

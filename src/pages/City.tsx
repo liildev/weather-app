@@ -1,12 +1,11 @@
 import { Fragment } from "react";
+import { useFetch } from "../hooks";
 import { useParams } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "../assets";
 import { Filter, TimeAndLocation, TemperatureAndDetails } from "../components";
-import { useFetch } from "../hooks";
 
 export default function City() {
   const { name } = useParams();
-
   const { units, error, loading, weather, setQuery, setUnits } = useFetch(name);
 
   return (
