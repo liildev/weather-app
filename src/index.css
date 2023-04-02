@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply font-montserrat text-white bg-gradient-to-br from-cyan-700 to-blue-700;
+  }
+
+  header {
+    @apply bg-main px-7 h-[10vh];
+    @apply fixed w-full top-0 left-0 right-0 flex-between z-40;
+  }
+
+  h1 {
+    @apply text-2xl font-bold;
+  }
+
+  h3 {
+    @apply text-lg font-semibold;
+  }
+
+  input,
+  select {
+    @apply w-full text-black rounded-10 outline-none shadow-md p-3;
+  }
+
+  button {
+    @apply font-light text-xl;
+  }
+
+  p {
+    @apply font-light;
+  }
+
+  span {
+    @apply font-medium ml-1;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1400px] h-[90vh] w-full ml-60;
+  }
+
+  .sidebar {
+    @apply fixed h-[90vh] w-60 bg-main;
+  }
+
+  .flex-center {
+    @apply flex items-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-items-center {
+    @apply flex items-center justify-center;
+  }
+
+  .search-thumb {
+    @apply bg-yellow absolute right-0 top-[50%] p-1;
+    @apply rounded-10 translate-y-[-50%] translate-x-[-20%];
+  }
+
+  .input-icon {
+    @apply cursor-pointer transition ease-out hover:scale-125;
+  }
+
+  .btn-hover {
+    @apply transition ease-out hover:scale-125;
+  }
+
+  .temperature-item {
+    @apply flex-items-center gap-x-1 font-light text-sm;
+  }
+  /* Auth */
+  .auth-form {
+    @apply flex flex-col justify-center gap-y-5 max-w-lg w-full bg-white shadow-xl rounded-lg px-20 py-10;
+  }
+
+  .auth-form input {
+    @apply border border-main shadow-none;
+  }
+}
