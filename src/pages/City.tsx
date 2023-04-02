@@ -1,45 +1,13 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { useParams } from "react-router-dom";
-import { getFormattedWeatherData } from "../services";
 import { AiOutlineLoading3Quarters } from "../assets";
 import { Filter, TimeAndLocation, TemperatureAndDetails } from "../components";
-
-import axios from "axios";
+import { useFetch } from "../hooks";
 
 export default function City() {
   const { name } = useParams();
-  const [units, setUnits] = useState("metric");
-  const [error, setError] = useState("");
-  const [query, setQuery] = useState({ q: name });
-  const [loading, setLoading] = useState(false);
-  const [weather, setWeather] = useState<IWeather | any>(null);
 
-  useEffect(() => {
-    if (name) {
-      setQuery({ q: name });
-    }
-  }, [name]);
-
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        setLoading(true);
-
-        const data = await getFormattedWeatherData({ ...query, units });
-
-        setError("");
-        setWeather(data);
-      } catch (e) {
-        if (axios.isAxiosError(e) && e.response) {
-          setError(e.response.data.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchWeather();
-  }, [query, units]);
+  const { units, error, loading, weather, setQuery, setUnits } = useFetch(name);
 
   return (
     <div className="max-w-xl mx-auto">
