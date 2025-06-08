@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+}
+
+:root {
+  --background: oklch(0.9816 0.0017 247.84);
+  --foreground: oklch(0.2621 0.0095 248.19);
+  --primary: oklch(0.5782 0.2282 260.03);
+  --border: oklch(0.2686 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.7rem;
+}
+
+.dark {
+  --background: oklch(0.2621 0.0095 248.19);
+  --foreground: oklch(0.9816 0.0017 247.84);
+  --primary: oklch(0.5782 0.2282 260.03);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-poppins;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .weather-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-all duration-300;
+  }
+  .tab-active {
+    @apply bg-white dark:bg-gray-700 text-black dark:text-white shadow;
+  }
+  .tab-inactive {
+    @apply text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .animate-fade-out {
+    animation: fadeOut 0.3s ease-in-out;
+  }
+}
+
+@utility container {
+  padding: 1rem;
+  margin-inline: auto;
+  max-width: 800px;
+
+  @variant md {
+    padding: 4rem 1rem;
+  }
+}
